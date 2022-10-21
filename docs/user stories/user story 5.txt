@@ -1,0 +1,3 @@
+STORY 5: Email/app updates about location status updates
+
+As a user, I want to be notified (through email or app) or notify others (if they are also using the app) when the status of a favorite location changes so I can change plans or flights ASAP if needed. I should also be able to see the reason why the change was made.
