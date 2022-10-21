@@ -1,0 +1,3 @@
+STORY 2: Searching for a specific location & its info
+
+As a user, I want to search for a specific location to see its safety information before I book a trip. I also want to know whether or not my friends or family are in a safe location. If friends/family members are in a place, I should be able to search about that place to get a sense on whether it is safe or not (without the need to search for flights for myself), and I can determine what safe means according to my definition (using keywords/articles connected to story 6).
