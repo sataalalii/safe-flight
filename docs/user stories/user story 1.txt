@@ -1,0 +1,2 @@
+STORY 1: Creating an account / logging in & resetting password
+As a user, I want to be able to create an account so I can save preferred locations. Assuming creating an account is successful, I should be able to reset my password and choose to opt-in the notification list for the web app (connected to story 5). 
