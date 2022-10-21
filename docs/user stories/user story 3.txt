@@ -1,0 +1,4 @@
+STORY 3: Saving location to favorites list
+
+As a user, I want to save the places I want to visit because it would be unnecessary to keep searching for them each time there might be more news. Assuming this is successful, I would have a list of all the places I want to visit, and there would be a second column containing whether each place is safe or not, a third column would be a checkbox to indicate whether I have overridden its safety (or lack of). I should be able to clear the whole list at once if I wish to reset my favorite places, but I should also be able to delete a single location from my list.
+
