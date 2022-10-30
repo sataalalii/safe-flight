@@ -1,4 +1,4 @@
 STORY 4: Checking flights? Or searching for specific airline to filter list of flights
 
-As a user, I want to be able to have flights going to a place/ favorite location displayed by my preference of an airline first. If a location is safe and I want to see flights, I can input a date range (will have a couple month limit) to filter more relevant flights. That way, I can ensure that news is still relevant to the time limit I have set.
+As a user, I want to be able to have flights going to a place/ favorite location displayed by my preference of an airline first. This would be optional, as I may not have a preferred airline. If a location is safe and I want to see flights, I can input a date range (will have a couple month limit) to filter more relevant flights. That way, I can ensure that news is still relevant to the time limit I have set. The date range would allow parsing through the flight database finding relevant flights.
 
