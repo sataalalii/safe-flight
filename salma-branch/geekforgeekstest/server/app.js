@@ -7,6 +7,11 @@ res.send("Hello World!");
 
 app.post("/post", (req, res) => {
     console.log("connected to React");
+    res.redirect("/results");
+});
+
+app.post("/results", (req, res) => {
+    console.log("on results page");
     res.redirect("/");
 });
 

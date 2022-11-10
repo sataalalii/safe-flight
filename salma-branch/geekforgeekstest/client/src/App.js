@@ -4,25 +4,15 @@ import "./App.css";
 function App() {
 return (
 	<div className="App">
-	<header className="App-header">
-		<img src={logo} className="App-logo"
-			alt="logo" />
-		
-<p>A simple React app.....</p>
-
-		<a
-		className="App-link"
-		href="https://reactjs.org"
-		target="_blank"
-		rel="noopener noreferrer"
-		>
-		Learn React
-		</a>
-		<form action="../../post" method="post"
+    <form action="../../post" method="post"
 			className="form">
 		<button type="submit">Connected?</button>
 		</form>
-	</header>
+    <form action="../../results" method="post"
+			className="form">
+		<button type="submit">get results?</button>
+		</form>
+
 	</div>
 );
 }
