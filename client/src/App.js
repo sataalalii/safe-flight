@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
-import Axios from 'axios'
+// imports made here
+import React, { Component } from 'react'; // Primary use of React and Components package in it.
+import Axios from 'axios' // allows for HTTP requests (POST/GET...)
 
+
+// made a class called FlightForm as basic display of a form taking in flight destination and departure.
 class FlightForm extends Component {
 
   constructor(props) {
@@ -10,8 +13,10 @@ class FlightForm extends Component {
       arr_iata: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFlight = this.updateFlight.bind(this);
   }
 
+  // handles submission of arr_iata and dep_iata on page.
   handleSubmit(event) {
     event.preventDefault();
     const url = '../../results';
@@ -25,6 +30,7 @@ class FlightForm extends Component {
       })
   }
 
+  // method called by handleSubmit to update dep_iata and arr_iata.
   updateFlight(event) {
     this.setState({
       dep_iata: event.target.value,
@@ -33,6 +39,7 @@ class FlightForm extends Component {
   }
 
 
+  // currently keeping this bit of code below in case it helps for future reference.
 
   // render() {
   //   return (
@@ -53,6 +60,8 @@ class FlightForm extends Component {
   //     </div>
   //   );
   // }
+
+  // method that displays form on page.
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
