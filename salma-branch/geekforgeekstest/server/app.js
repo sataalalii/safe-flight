@@ -4,8 +4,12 @@ const app = express();
 const request = require("request");
 const api_key = "6b33d67d-117b-4a2e-81e3-af38f8f3f51b";
 const api_base = "https://airlabs.co/api/v9/";
+const bodyparse = require('body-parser');
 // const cors = require("cors");
 
+
+app.use(bodyparse.json());
+app.use(bodyparse.urlencoded({extended: true}));
 // app.use(cors);
 
 function apiCall(method, params, cb) {
@@ -25,8 +29,10 @@ app.post("/post", (req, res) => {
 app.post("/results", (req, res) => {
     console.log("on results page");
     let data = req.body;
-    apiCall('flights', {lang: 'en', api_key: ''}, (e, r) => {
-        console.log(r);
+    data.api_key = api_key;
+    console.log(data);
+    apiCall('flights', data, (e, r) => {
+        res.send(r);
     });
     
 });
