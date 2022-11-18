@@ -3,6 +3,17 @@ import React, { Component } from 'react'; // Primary use of React and Components
 import Axios from 'axios' // allows for HTTP requests (POST/GET...)
 
 
+import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages';
+import About from './pages/about';
+import Events from './pages/events';
+import AnnualReport from './pages/annual';
+import Teams from './pages/team';
+import Blogs from './pages/blogs';
+import SignUp from './pages/signup';
+
 // made a class called FlightForm as basic display of a form taking in flight destination and departure.
 class FlightForm extends Component {
 
@@ -61,14 +72,29 @@ class FlightForm extends Component {
   //   );
   // }
 
+  App() {
+    return (
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' exact component={Home} />
+          <Route path='/about' component={About} />
+          <Route path='/events' component={Events} />
+          <Route path='/annual' component={AnnualReport} />
+          <Route path='/team' component={Teams} />
+          <Route path='/blogs' component={Blogs} />
+          <Route path='/sign-up' component={SignUp} />
+        </Routes>
+      </Router>
+    );
+  }
+
+
   // method that displays form on page.
   render() {
     return (
+
         <form onSubmit={this.handleSubmit}>
-
-            
-
-
             <p className="title">Flights</p>
             <p className="subtitle">Get flights by entering departure city iata and arrival city iata</p>
             <div className="field">
@@ -98,6 +124,10 @@ class FlightForm extends Component {
                         type='submit'
                         value='Search' />
                 </div>
+            </div>
+
+            <div>
+              
             </div>
         </form>
     )
