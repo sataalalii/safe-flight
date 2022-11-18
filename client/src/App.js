@@ -65,6 +65,10 @@ class FlightForm extends Component {
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
+
+            
+
+
             <p className="title">Flights</p>
             <p className="subtitle">Get flights by entering departure city iata and arrival city iata</p>
             <div className="field">
