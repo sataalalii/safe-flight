@@ -93,7 +93,7 @@ class FlightForm extends Component {
   // method that displays form on page.
   render() {
     return (
-
+        
         <form onSubmit={this.handleSubmit}>
             <p className="title">Flights</p>
             <p className="subtitle">Get flights by entering departure city iata and arrival city iata</p>
@@ -125,13 +125,11 @@ class FlightForm extends Component {
                         value='Search' />
                 </div>
             </div>
-
-            <div>
-              
-            </div>
         </form>
+        
     )
 }
+
 }
 
 export default FlightForm;
