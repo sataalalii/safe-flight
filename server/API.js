@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+console.log(process.env);
 
 
 const request = require("request");
@@ -14,3 +14,24 @@ function apiCall(method, params, cb) {
 //     console.log(res);
 // });
 
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI(process.env.NEWS);
+
+function newsCall(place) {
+    newsapi.v2.everything({
+        q: place,
+        from: '2022-1-1',
+        language: 'en',
+        sortBy: 'relevancy',
+        page: 2
+    })
+        .then(response => {
+            return response;
+        /*
+          {
+            status: "ok",
+            articles: [...]
+          }
+        */
+    });
+}

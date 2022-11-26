@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import LogIn from "./components/LogIn";
 import Contact from "./components/Contact";
 import NoPage from "./components/NoPage";
+import Search from "./components/Search";
 
 export default function App() {
     return (
@@ -12,7 +13,8 @@ export default function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path="login" element={<LogIn />} />
-                    <Route path="contact" element={<Contact />} />
+                    <Route path="search" element={<Search />} />
+                    {/*<Route path="contact" element={<Contact />} />*/}
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
