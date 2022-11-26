@@ -71,29 +71,29 @@ class FlightForm extends Component {
   //     </div>
   //   );
   // }
-
-  App() {
-    return (
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/events' component={Events} />
-          <Route path='/annual' component={AnnualReport} />
-          <Route path='/team' component={Teams} />
-          <Route path='/blogs' component={Blogs} />
-          <Route path='/sign-up' component={SignUp} />
-        </Routes>
-      </Router>
-    );
-  }
+  //
+  // render() {
+  //   return (
+  //     <Router>
+  //       <Navbar />
+  //       <Routes>
+  //         <Route path='/' exact component={Home} />
+  //         <Route path='/about' component={About} />
+  //         <Route path='/events' component={Events} />
+  //         <Route path='/annual' component={AnnualReport} />
+  //         <Route path='/team' component={Teams} />
+  //         <Route path='/blogs' component={Blogs} />
+  //         <Route path='/sign-up' component={SignUp} />
+  //       </Routes>
+  //     </Router>
+  //   );
+  // }
 
 
   // method that displays form on page.
   render() {
     return (
-        
+
         <form onSubmit={this.handleSubmit}>
             <p className="title">Flights</p>
             <p className="subtitle">Get flights by entering departure city iata and arrival city iata</p>
@@ -126,7 +126,7 @@ class FlightForm extends Component {
                 </div>
             </div>
         </form>
-        
+
     )
 }
 
