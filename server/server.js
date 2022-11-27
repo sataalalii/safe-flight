@@ -1,4 +1,4 @@
-const apiCall = require("./API.js");
+const apiCall = require("./API");
 const express = require('express');
 const bodyparse = require('body-parser');
 // const cors = require('cors');
@@ -14,8 +14,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/placesearch", (req, res) => {
-    console.log(req.body);
-    res.send(apiCall.newsCall(req.body));
+    console.log(req.body["place"]);
+    apiCall.newsCall(req.body["place"])
+        .then(response =>
+        console.log(response));
+    // res.send(apiCall.newsCall(req.body["place"]));
 })
 
 app.post("/login", (req, res) => {

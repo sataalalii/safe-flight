@@ -17,14 +17,14 @@ class Search extends Component {
     /* This life cycle hook gets executed when the component mounts */
     handleChange(e) {
         this.setState({
-            [e.target.name]: e.target.value
+            place: e.target.value
         });
     }
     handleFormSubmit(e) {
         // Form submission logic
         e.preventDefault();
-        const place = this.state.place;
-        Axios.post("/placesearch", place)
+        const placeDetails = {"place": this.state.place};
+        Axios.post("/placesearch", placeDetails)
             .then( (res) => {
                 console.log(res);
             }).catch( (error) => {
