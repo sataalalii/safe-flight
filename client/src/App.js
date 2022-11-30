@@ -21,6 +21,7 @@ export default function App() {
 }
 
 //passport routing
+/*
 const express = require('express');
 const app = express();
 const passport = require('passport');
@@ -66,3 +67,4 @@ app.get('/auth/callback/failure' , (req , res) => {
 app.listen(4000 , () => {
     console.log("Server Running on port 4000");
 });
+*/
