@@ -12,7 +12,7 @@ import {
     return (
       <>
         <Nav>
-          <NavLink to='/Home'>
+          <NavLink to='/'>
             <img src={require('../assets/logo.png')} alt='logo' />
           </NavLink>
           <Bars />
@@ -23,16 +23,14 @@ import {
             <NavLink to='/Contact' activeStyle>
               Contact
             </NavLink>
-            {/* Second Nav */}
-            {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
           </NavMenu>
           <NavBtn>
             <NavBtnLink to='/LogIn'>Log In</NavBtnLink>
           </NavBtn>
         </Nav>
+
         <Outlet />
       </>
-      
     );
   };
 
