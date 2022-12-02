@@ -17,6 +17,9 @@ import {
           </NavLink>
           <Bars />
           <NavMenu>
+          <NavLink to='/FlightSearch' activeStyle>
+              Flight Search
+            </NavLink>
             <NavLink to='/About' activeStyle>
               About
             </NavLink>
