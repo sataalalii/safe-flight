@@ -46,7 +46,7 @@ class LogIn extends Component {
                 <input type="text" name = "email" placeholder="email address" onChange={e => this.handleChange(e)} />
                 <input type="text" name = "password" placeholder="password"  onChange={e => this.handleChange(e)}/>
                 <input type="submit" value="submit" onClick={this.handleFormSubmit}/>
-                <input type="submit" value="Log in with Google" onClick={this.handleFormSubmit}/>
+                {/* <input type="submit" value="Log in with Google" onClick={this.handleFormSubmit}/> */}
                 {/*<input type="submit" value="clear form" onClick={this.handleClearForm}/>*/}
             </form>
         );
