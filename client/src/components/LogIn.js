@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import Axios from 'axios';
 //import { auth } from './server/server.js';
 
-const oauth = require('../../server/server.js');
-const auth_res = oauth.auth();
+//const oauth = require('./../../server/server.js');
+//const auth_res = oauth.auth();
 
 class LogIn extends Component {
     constructor(props) {
@@ -46,7 +46,7 @@ class LogIn extends Component {
                 <input type="text" name = "email" placeholder="email address" onChange={e => this.handleChange(e)} />
                 <input type="text" name = "password" placeholder="password"  onChange={e => this.handleChange(e)}/>
                 <input type="submit" value="submit" onClick={this.handleFormSubmit}/>
-                <input type="submit" value="Log in with Google" onClick={auth_res}/>
+                <input type="submit" value="Log in with Google" onClick={this.handleFormSubmit}/>
                 {/*<input type="submit" value="clear form" onClick={this.handleClearForm}/>*/}
             </form>
         );
