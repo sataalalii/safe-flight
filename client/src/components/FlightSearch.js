@@ -43,7 +43,7 @@ const FS = () => {
                         </select>
                     </td>
                     <td>
-                        <button className="btn btn-primary" onClick={()=> handleSearch()}>Search</button>
+                        <button type="button" class="btn btn-outline-primary" onClick={()=> handleSearch()}>Search</button>
                     </td>
                 </tr>
             </Table>
@@ -72,7 +72,7 @@ const FS = () => {
                     }
                 </tbody>
             </Table>
-            <p>This page should only appear once the user is logged in</p>
+            <h1>This page should only appear once the user is logged in</h1>
         </div>
     );
 };
