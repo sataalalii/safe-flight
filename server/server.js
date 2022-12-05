@@ -1,4 +1,4 @@
-
+const apiCall = require("./API");
 const express = require('express');
 const bodyparse = require('body-parser');
 // const cors = require('cors');
@@ -12,6 +12,14 @@ app.use(bodyparse.urlencoded({extended: true}));
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
+
+app.post("/placesearch", (req, res) => {
+    console.log(req.body["place"]);
+    apiCall.newsCall(req.body["place"])
+        .then(response =>
+        console.log(response));
+    // res.send(apiCall.newsCall(req.body["place"]));
+})
 
 app.post("/login", (req, res) => {
     // console.log("I am a mouse");
