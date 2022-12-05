@@ -13,11 +13,22 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.post("/placesearch", (req, res) => {
-    console.log(req.body["place"]);
-    apiCall.newsCall(req.body["place"])
-        .then(response =>
-        console.log(response));
+app.get("/airportsDB", (req, res) => {
+    // let processedDB = apiCall.getAirlinesDB();
+    // console.log(apiCall.Airlabs_apiCall("airports", {api_key: "", iata_code: "BOS"}));
+    // console.log(processedDB);
+    return apiCall.getAirportsDB();
+    // apiCall.Airlabs_apiCall('airports', {iata_code: 'BOS'}, (err, res) => {
+    //     console.log(res.body);
+    // });
+    // res.send(processedDB);
+})
+app.post("/flightsearch", (req, res) => {
+    console.log(req.body);
+    // console.log(apiCall.processAirlineSearch(req.body));
+    // apiCall.newsCall(req.body["place"])
+    //     .then(response =>
+    //     console.log(response));
     // res.send(apiCall.newsCall(req.body["place"]));
 })
 
