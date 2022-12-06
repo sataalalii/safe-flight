@@ -4,23 +4,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
 
 const FS = () => {
+    const[airportsData, setAirportsData] = React.useState([])
     const[userData, setUserData] = React.useState([])
     const[userSearchData, setUserSearchData] = React.useState([]);
     const[country, setCountry] = React.useState('');
     const[status, setStatus] = React.useState('');
 
-    React.useEffect(()=>{
-        // const data = Axios.get("/AirlinesDB");
-        const data = [
-            {country: "France", city: "Paris", airport: "Paris Charles de Gaulle Airport", status: "Safe"},
-            {country: "Japan", city: "Tokyo", airport: "Haneda Airport", status: "Safe"},
-            {country: "Japan", city: "Tokyo", airport: "Narita International Airport", status: "Safe"},
-            {country: "Germany", city: "Berlin", airport: "Berlin Brandenburg Airport", status: "Safe"},
-        ];
-
-        setUserData(data);
-        setUserSearchData(data);
-    },[])
+    // React.useEffect( () => {
+    //     fetch("/airportsDB")
+    //         .then(
+    //             airportsData => airportsData.json.then( airportsData => {
+    //                 setUserData(airportsData)
+    //                 setUserSearchData(airportsData)
+    //                 console.log("meowssss"+airportsData)
+    //             })
+    //         )
+    //     console.log(userData)
+    // }, [])
+    // React.useEffect(()=>{
+    //     // const data = Axios.get("/AirlinesDB");
+    //     const data = [
+    //         {country: "France", city: "Paris", airport: "Paris Charles de Gaulle Airport", status: "Safe"},
+    //         {country: "Japan", city: "Tokyo", airport: "Haneda Airport", status: "Safe"},
+    //         {country: "Japan", city: "Tokyo", airport: "Narita International Airport", status: "Safe"},
+    //         {country: "Germany", city: "Berlin", airport: "Berlin Brandenburg Airport", status: "Safe"},
+    //     ];
+    //
+    //     setUserData(data);
+    //     setUserSearchData(data);
+    // },[])
 
     const handleSearch = () => {
         const newData =
@@ -33,9 +45,21 @@ const FS = () => {
 
     const handleGetData = () => {
         // making a request to backend for flight search.
-        Axios.get("/airportsDB").then(res => {
-            console.log(res)
-        });
+        fetch("/airportsDB").then(
+            // res => console.log(res)
+        );
+    //     React.useEffect( () => {
+    //     fetch("/airportsDB").then(
+    //         res => res
+    //         .then(
+    //             airportsData => {
+    //                 setUserData(airportsData)
+    //                 setUserSearchData(airportsData)
+    //                 console.log("meow"+airportsData)
+    //             })
+    //     )
+    // }, [])
+
     }
 
     return (
