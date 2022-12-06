@@ -1,51 +1,53 @@
-import React, {Component} from 'react';
-import Axios from 'axios';
+import { useEffect, useState } from "react";
+import '../App.css'
+import jwt_decode from "jwt-decode";
 
-class LogIn extends Component {
-    constructor(props) {
-        super(props);
+const Login = () => {
+    const [ user, setUser ] = useState({});
 
-        this.state = {
-            email: '',
-            password: ''
-
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        // this.handleClearForm = this.handleClearForm.bind(this);
+    function handleCallbackResponse(response) {
+        console.log("Encoded JWT ID token: " + response.credential);
+        var userObject =jwt_decode(response.credential);
+        console.log(userObject);
+        setUser(userObject);
+        document.getElementById("signInDiv").hidden = true;
     }
 
-    /* This life cycle hook gets executed when the component mounts */
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
+    function handleSignOut(event){
+        setUser({});
+        document.getElementById("signInDiv").hidden = false;
+    }
+
+    useEffect(() => {
+        /* global google */
+        google.accounts.id.initialize({
+            client_id: "478098685389-liun3vb2lmc7o8rsdp8lor02i9fe04c8.apps.googleusercontent.com",
+            callback: handleCallbackResponse
         });
-    }
-    handleFormSubmit(e) {
-        // Form submission logic
-        e.preventDefault();
-        const userDetails = {email: this.state.email, password: this.state.password};
-        Axios.post("/login", userDetails)
-            .then( (res) => {
-                console.log(res);
-            }).catch( (error) => {
-            console.log(error);
-        });
-    }
-    // handleClearForm() {
-    //     // Logic for resetting the form
-    //     this.setState({email: '', password: ''});
-    // }
-    render() {
-        return (
-            <form>
-                <input type="text" name = "email" placeholder="email address" onChange={e => this.handleChange(e)} />
-                <input type="text" name = "password" placeholder="password"  onChange={e => this.handleChange(e)}/>
-                <input type="submit" value="submit" onClick={this.handleFormSubmit}/>
-                {/*<input type="submit" value="clear form" onClick={this.handleClearForm}/>*/}
-            </form>
+
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            {theme: "outline", size: "large"}
         );
-    }
-}
 
-export default LogIn;
+        google.accounts.id.prompt();
+    }, []);
+    // If we have no user: sign in button
+    // If we have a user: show the logout button
+    return (
+        <div className="App">
+            <div id="signInDiv"></div>
+            { Object.keys(user).length != 0 &&
+                <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
+            }
+            { user &&
+            <div>
+                <img src = {user.picture}></img>
+                <h3>{user.Name}</h3>
+            </div>
+            }
+        </div>
+    );
+};
+
+export default Login;
