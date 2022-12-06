@@ -1,11 +1,10 @@
 import requests  # used to make requests to Airlabs
 import json  # used to parse a json to an object or vice versa after api call.
 from decouple import config  # used to store secret keys in .env file
+
 AIRLABS = config("AIRLABS", default='')
-
-
-# method = 'ping'
-api_base = 'http://airlabs.co/api/v9/'
+AIRLABS_BASE = config("AIRLABS_BASE", default='')
+TA_BASE = config('TA_BASE', default='')
 
 
 # api_result = requests.get(api_base+method, params)
@@ -20,9 +19,9 @@ def getAirportsDB():
     :return: returns an array of json/dictionary-like elements.
     """
     params = {
-        'api_key': AIRLABS,
+        'api_key': AIRLABS
     }
-    airports_api_response = requests.get(api_base + 'airports', params).json()["response"]  # returns array with airport
+    airports_api_response = requests.get(AIRLABS_BASE + 'airports', params).json()["response"]  # returns array with airport
     returned_list = []
     # country_params = params
     # country_names = {}
@@ -35,8 +34,19 @@ def getAirportsDB():
         #     country_names[country_code] = country_elem['name']
         # else:
         #     country_elem = {'name': country_names[country_code]}
-        airport_dict = {"name": airport_elem.get("name"), "iata_code": airport_elem.get('iata_code')
-            # ,'country': airport_elem['name']
+        airport_dict = {"name": airport_elem.get("name"), "iata_code": airport_elem.get('iata_code'),
+                        "country_code": airport_elem.get("country_code")
+                        # ,'country': airport_elem['name']
                         }
         returned_list += [airport_dict]
     return (returned_list)
+
+
+def getWarningLevel(country_code):
+    if (country_code and len(country_code) > 0):
+        url_rest = '?countrycode=' + country_code
+        result = requests.get(TA_BASE + url_rest).json()["data"]
+    else:
+        result = {}
+    print(result)
+    return result
