@@ -1,2 +1,8 @@
-STORY 1: Creating an account / logging in & resetting password
-As a user, I want to be able to create an account so I can save preferred locations. Assuming creating an account is successful, I should be able to reset my password and choose to opt-in the notification list for the web app (connected to story 5). Creating an account would entail having a first name, last name, and an email address. Resetting the password would entail entering an email address, and should the email address be contained in the user database, the email address would receive an email to reset their password. Opting in the notification list would update me with any changes to the statuses of the locations I have saved (related to user story 5). 
+STORY 1: Creating an account / logging in through google oauth
+As a user, I want to be able to create an account, so I can save preferred locations. This will be done using a google
+account oauth. Assuming creating an account is successful, I should be able to store the countries I wish to
+visit instead of searching for a country over and over (related to story 3).
+
+Signing in/up through google oauth entails the creation of an account or logging in through google's system. No
+information about the user's log in is stored except for a session ID to ensure they stay logged in when navigating from
+tab to tab.

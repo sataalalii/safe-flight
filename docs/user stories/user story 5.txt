@@ -1,3 +1,12 @@
-STORY 5: Email/app updates about location status updates
+STORY 5: Allow the user to override whether they feel safe about traveling to a place.
 
-As a user, I want to be notified (through email or app) or notify others (if they are also using the app) when the status of a favorite location changes so I can change plans or flights ASAP if needed. I should also be able to see the reason why the change was made. This would be done by storing all user ids interested in a certain location under that location’s row in the locations database instead of searching through each user to see if they have that location as a preferred place. Notifying others would be through entering their email as someone to be notified, and should they have an account on the app, they would be able to receive a request to be notified about that location, and to decide whether to opt-in on email/app.
+As a user, I want the option to be shown the safety index (safe or not) before seeing flight information. This is because
+I may forget or not even know that a specific country is unsafe. I may not have it in my saved places list.
+As such, I want to be able to see its safety index and only if I override the safety index should I be able to see
+flights headed to that country, as I may have a different feel of what is
+dangerous (to me specifically or in general). Therefore, I can override the status if I feel strongly in the opposite
+direction. This would occur if a place was deemed unsafe, I may be a person
+that needs to go there despite the risk, and I can’t be shown flights to that particular location unless I override the
+status myself (to show I am aware of the risk).
+
+

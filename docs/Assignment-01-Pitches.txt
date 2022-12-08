@@ -1,17 +1,35 @@
 Project Pitches
 
-Tentatively, we are looking to do the project with the front-end being Javascript, and the back-end possibly being Javascript or Python.
+We are using React for front-end and python flask for backend. Our database is stored using mongoDB.
 
-Idea 1: Streaming & Theater availability (Available in region and streaming platform)
+Idea 1: Streaming & Theater availability (Available in region and streaming platform) (Secondary Idea)
 
-Our first web application idea allows for users to search about movies and TV shows (actors and what they played in) and get back information about the searched item as well as what platform currently hosts it (Netflix, Hulu, and others). The driving point is that streaming platforms display different content based on region, and our web application addresses that key issue. Users will have the option to log on to the website using any social media platform account to fulfill our third party authentication. The users will have their accounts connected to the web application for a reason, and that is to store which region they currently are in, in order to display which streaming service hosts a particular movie/show (accounting for region). Should a certain movie/show not be hosted in the region at all, we'll display the less relevant (but still useful) detail of the different regions (and respective platforms) that do have the movie/show. The other feature we will be providing is that we display showtimes for movies currently playing in theaters, which is what Movieglu API is used for.
+Our first web application idea allows for users to search about movies and
+TV shows (actors and what they played in) and get back information about the searched
+item as well as what platform currently hosts it (Netflix, Hulu, and others). The driving point is that
+streaming platforms display different content based on region, and our web application addresses that key issue.
+Users will have the option to log on to the website using any social media platform account to fulfill our third
+party authentication. The users will have their accounts connected to the web application for a reason, and that is
+to store which region they currently are in, in order to display which streaming service hosts a particular movie/show
+(accounting for region). Should a certain movie/show not be hosted in the region at all, we'll display the less relevant
+(but still useful) detail of the different regions (and respective platforms) that do have the movie/show.
+ The other feature we will be providing is that we display showtimes for movies currently playing in theaters,
+ which is what Movieglu API is used for.
 
-We will be using the "Watchmode" API, https://api.watchmode.com/, which is an api storing different shows and movies based both on platform and region. We will be using MovieGlu API, https://developer.movieglu.com/  for different movie showtimes (in theaters).
+We will be using the "Watchmode" API, https://api.watchmode.com/, which is an api storing different shows and movies
+based both on platform and region. We will be using MovieGlu API, https://developer.movieglu.com/ for different movie
+showtimes (in theaters).
 
 
 
-Idea 2: How safe it is to visit a place based on local news
+Idea 2: Safe Flight (Primary Idea)
 
-Our second idea allows users to look up how safe a specific location is based on news reports and see whether there are active or future flights in or around that location. We use the flight details as an indication of how safe a place is to visit by analyzing whether certain airlines are do not pass over those places. Another way the information can be utilized is if the number of flights headed to a certain destination plummet (or headed that way), it may be attributed to safety. If a user has a preferred airline that they want to fly (for points) they can link their account from that to the application to get specific flights, as well as mileage reward info as third party authentication.
+Our second idea allows users to look up how safe a specific location is based on a safety index. The user will be able
+to see if a country is safe to visit or not and store their favourite countries in a list that updates to check for
+changes. The user will be allowed to make a flight search using departure and arrival iata codes, but if a place is not
+safe to visit, the user will be warned first. The results of the flight search should display options of flights that
+are scheduled.
 
-The two APIS we are using are News API (https://newsapi.org/) to analyze the latest news on the countries/places and Airlabs API (https://airlabs.co/docs/flights) will be used to analyze flight details.
+The two APIS we are using are Travel Advisory (https://www.travel-advisory.info/data-api) to get the
+latest travel advisory index on the countries and
+Airlabs API (https://airlabs.co/docs/flights) will be used to utilize flight details such as airports and flight times.

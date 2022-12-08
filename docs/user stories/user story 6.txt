@@ -1,5 +1,0 @@
-STORY 6: Display keywords found when determining a place is safe or not to allow the user to override whether they feel safe about traveling to a place.
-
-As a user, I want the option to see what keywords and/or news articles are used to determine the safety status of a location because I may have a different feel of what is dangerous (to me specifically or in general). Therefore, I can override the status if I feel strongly in the opposite direction. This would occur if a place was deemed unsafe, and I would have a button that allows for the display of at most 10 keywords associated with the location’s safety. At the end, I have the option to override the status of this location (in my preferred list), as I may be a person that needs to go there despite the risk, and I can’t be shown flights to that particular location unless I override the status myself (to show I am aware of the risk).
-
-
