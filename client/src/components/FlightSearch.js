@@ -1,64 +1,50 @@
 import React from "react";
 import {Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 const FS = () => {
-    const[airportsData, setAirportsData] = React.useState([])
+    // const[airportsData, setAirportsData] = React.useState([])
     const[userData, setUserData] = React.useState([])
     const[userSearchData, setUserSearchData] = React.useState([]);
     const[country, setCountry] = React.useState('');
     const[status, setStatus] = React.useState('');
 
-    // React.useEffect( () => {
-    //     fetch("/airportsDB")
-    //         .then(
-    //             airportsData => airportsData.json.then( airportsData => {
-    //                 setUserData(airportsData)
-    //                 setUserSearchData(airportsData)
-    //                 console.log("meowssss"+airportsData)
-    //             })
-    //         )
-    //     console.log(userData)
-    // }, [])
-    // React.useEffect(()=>{
-    //     // const data = Axios.get("/AirlinesDB");
-    //     const data = [
-    //         {country: "France", city: "Paris", airport: "Paris Charles de Gaulle Airport", status: "Safe"},
-    //         {country: "Japan", city: "Tokyo", airport: "Haneda Airport", status: "Safe"},
-    //         {country: "Japan", city: "Tokyo", airport: "Narita International Airport", status: "Safe"},
-    //         {country: "Germany", city: "Berlin", airport: "Berlin Brandenburg Airport", status: "Safe"},
-    //     ];
-    //
-    //     setUserData(data);
-    //     setUserSearchData(data);
-    // },[])
-
+    React.useEffect( () => {
+        axios.get("/airportsDB")
+            .then(
+                    res => {
+                        // console.log(res)
+                        const airportsData = res.data["data"];
+                        setUserData(airportsData)
+                        setUserSearchData(airportsData)
+                    }
+                )
+        // axios({method: "GET", url: "/warningLevel"})
+        //     .then(
+        //         res => {
+        //             console.log(res)
+        //         }
+        //     )
+    }, [])
+    const handleUpdateDB = () => {
+        axios({method: "POST", url: "/airportsDB", params: {data: "True"}})
+            .then(
+                res => {
+                    // console.log(res)
+                    const airportsData = res.data["data"];
+                    setUserData(airportsData)
+                    setUserSearchData(airportsData)
+                    // console.log(res.data["data"])
+                }
+            )
+    }
     const handleSearch = () => {
         const newData =
             userData
                 .filter(x => x.country === (country === '' ? x.country : country))
                 .filter(y => y.status === (status === '' ? y.status : status))
         setUserSearchData(newData)
-
-    }
-
-    const handleGetData = () => {
-        // making a request to backend for flight search.
-        fetch("/airportsDB").then(
-            // res => console.log(res)
-        );
-    //     React.useEffect( () => {
-    //     fetch("/airportsDB").then(
-    //         res => res
-    //         .then(
-    //             airportsData => {
-    //                 setUserData(airportsData)
-    //                 setUserSearchData(airportsData)
-    //                 console.log("meow"+airportsData)
-    //             })
-    //     )
-    // }, [])
 
     }
 
@@ -78,7 +64,7 @@ const FS = () => {
                     </td>
                     <td>
                         <button type="button" class="btn btn-outline-primary" onClick={()=> handleSearch()}>Search</button>
-                        <button type="button" onClick={() => handleGetData()}>Get Airports DB!</button>
+                        <button type="button" class="btn btn-outline-primary" onClick={() => handleUpdateDB()}>Update Database!</button>
                     </td>
                 </tr>
             </Table>
@@ -87,7 +73,7 @@ const FS = () => {
                 <thead>
                 <tr>
                     <th>Country</th>
-                    <th>City</th>
+                    {/*<th>City</th>*/}
                     <th>Airport</th>
                     <th>Status</th>
                 </tr>
@@ -98,7 +84,6 @@ const FS = () => {
                         userSearchData.map(item =>
                             <tr>
                                 <td>{item.country}</td>
-                                <td>{item.city}</td>
                                 <td>{item.airport}</td>
                                 <td>{item.status}</td>
                             </tr>
