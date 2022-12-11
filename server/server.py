@@ -13,33 +13,64 @@ def hello_world():
     return 'Hello'
 
 
-@app.route('/airportsDB', methods=["GET", "POST"])
-def airportsDB():
-    if request.method == 'POST':
-        isRestart = request.get_json()['params']['data']
-        if (isRestart):
-            mongoDB.mycol.drop()
+@app.route('/countriesDB', methods=["GET", "POST"])
+def countriesDB():
+    if ("countries" not in mongoDB.mydb.list_collection_names()):
+        mycol = mongoDB.createCollection("countries")
 
-    api_result = api.getAirportsDB()
+    else:
+        mycol = mongoDB.getCollection("countries")
 
-    if ("airports" not in mongoDB.mydb.list_collection_names()):
-        mongoDB.createCollection()
-        mongoResult = mongoDB.insert_many(json.loads(json_util.dumps(api_result)))
+    if request.method == 'POST':  # if the intent is to update the DB
+        isRestart = request.get_json()['data']
+        if (isRestart and "countries" in mongoDB.mydb.list_collection_names()):
+            mycol.drop()
+    else:  # if getting the database after clicking on loading tab for first time
+        x = mycol.find({}, {"_id": 0})
+        if (mycol.count_documents({}) > 1):  # if the database already exists, load it instead of recreating it.
+            result = []
+            for y in x:
+                result += [y]
+            response = jsonify({"data": result})
+            return response
 
-    x = mongoDB.find({}, {"_id": 0})
+    api_result = api.getCountriesDB()
+    mongoResult = mycol.insert_many(json.loads(json_util.dumps(api_result)))
+
+    x = mycol.find({}, {"_id": 0})
     result = []
     for y in x:
         result += [y]
     response = jsonify({"data": result})
-    print(response)
     return response
 
 
-@app.route('/warningLevel')
-def warningLevel():
-    result = api.getWarningLevel('US')
+# @app.route('/warningLevel')
+# def warningLevel():
+#     result = api.getWarningLevel('US')
+#
+#     return result
 
-    return result
+
+@app.route("/favourites", methods=["POST"])
+def favourites():
+    request_data = request.get_json()["request_data"]
+    country_data = request_data.get('data')
+    isChecked = request_data.get('is_checked')
+    if ("favourites" in mongoDB.mydb.list_collection_names()):
+        mycol = mongoDB.getCollection("favourites")
+    else:
+        mycol = mongoDB.createCollection("favourites")
+
+    if (isChecked):
+        mycol.insert_one(country_data)
+    else:
+        mycol.delete_one(country_data)
+
+    countriesCollection = mongoDB.getCollection("countries")
+    countriesCollection.update_one(country_data, {"$set": {"inFavourites": isChecked}})
+
+    return isChecked
 
 
 if __name__ == '__main__':

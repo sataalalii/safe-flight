@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./components/About";
 import Home from "./components/Home";
-import FlightSearch from "./components/FlightSearch";
+import FlightSearch from "./components/CountryRiskSearch";
 import LogIn from "./components/LogIn";
 import Contact from "./components/Contact";
 import NoPage from "./components/NoPage";
