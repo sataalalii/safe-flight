@@ -2,10 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./components/About";
 import Home from "./components/Home";
-import FlightSearch from "./components/CountryRiskSearch";
+import CountryRiskSearch from "./components/CountryRiskSearch";
 import LogIn from "./components/LogIn";
 import Contact from "./components/Contact";
 import NoPage from "./components/NoPage";
+import SavedPlaces from "./components/SavedPlaces";
 
 export default function App() {
     return (
@@ -15,7 +16,8 @@ export default function App() {
                     <Route index element={<Home />} />
                     <Route path="login" element={<LogIn />} />
                     <Route path="about" element={<About />} />
-                    <Route path="flightsearch" element={<FlightSearch />} />
+                    <Route path= "savedPlaces" element={<SavedPlaces />} />
+                    <Route path="countryRiskSearch" element={<CountryRiskSearch />} />
                     <Route path="contact" element={<Contact />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>

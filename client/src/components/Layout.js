@@ -17,8 +17,11 @@ import {
           </NavLink>
           <Bars />
           <NavMenu>
-          <NavLink to='/FlightSearch' activeStyle>
-              Flight Search
+          <NavLink to='/CountryRiskSearch' activeStyle>
+              Country Risk Search
+            </NavLink>
+          <NavLink to='/SavedPlaces' activeStyle>
+          Saved Places
             </NavLink>
             <NavLink to='/About' activeStyle>
               About

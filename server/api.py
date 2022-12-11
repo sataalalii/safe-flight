@@ -9,6 +9,44 @@ TA_BASE = config('TA_BASE', default='')
 
 # api_result = requests.get(api_base+method, params)
 # api_response = api_result.json()
+def getStatus(current_advisory):
+    currentWarningLevel = current_advisory['advisory']['score']
+    if (currentWarningLevel < 2.5):
+        country_status = 'Low Risk'
+    elif (currentWarningLevel < 3.5):
+        country_status = 'Medium Risk'
+    elif (currentWarningLevel < 4.5):
+        country_status = 'High Risk'
+    else:  # (currentWarningLevel >= 4.5):
+        country_status = 'Extreme Warning'
+    return country_status
+
+
+def getCountriesDB():
+    """
+    :return: returns an array of json/dictionary-like elements.
+    """
+    params = {
+        'api_key': AIRLABS
+    }
+    api_response = requests.get(AIRLABS_BASE + 'countries', params).json()["response"]  # returns array with airport
+    returned_list = []
+    countryAdvisoryInfo = {}
+    for i in range(len(api_response)):
+        country_elem = api_response[i]
+        country_code = country_elem.get("code")
+        country_name = country_elem.get("name")
+        if (country_code in countryAdvisoryInfo):
+            country_status = countryAdvisoryInfo[country_code]['status']
+        else:
+            country_status = "Unknown"
+            currentAdvisory = getWarningLevel(country_code)
+            if (currentAdvisory):
+                country_status = getStatus(currentAdvisory)
+
+        country_dict = {"country_name": country_name, "_id": country_code, "country_status": country_status}
+        returned_list += [country_dict]
+    return (returned_list)
 
 
 def getAirportsDB():

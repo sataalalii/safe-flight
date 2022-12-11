@@ -2,7 +2,7 @@ import React from "react";
 import {Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import SavedCountries from "./SavedCountries";
+import SavedPlaces from "./SavedPlaces";
 
 const CS = () => {
     // const[airportsData, setAirportsData] = React.useState([])
@@ -47,7 +47,7 @@ const CS = () => {
 
     const handleFavouritePlace = (e) => {
             // console.log(e.target.value, e.target.checked)
-            axios.post("/favourites", {request_data: {data: e.target.value, isChecked: e.target.checked}}).then(
+            axios.post("/addFavourites", {request_data: {data: e.target.value, isChecked: e.target.checked}}).then(
                 res =>  {
                     console.log(res)
                 }
@@ -80,6 +80,7 @@ const CS = () => {
             <Table responsive stripped size="sm">
                 <thead>
                 <tr>
+                    <th>Add to Favourites?</th>
                     <th>Country Code</th>
                     <th>Name</th>
                     <th>Status</th>
@@ -90,8 +91,8 @@ const CS = () => {
                     userSearchData && userSearchData.length >0 ?
                         userSearchData.map(item =>
                             <tr>
-                                <td>{<input type="checkbox" value = {JSON.stringify(item)} onClick={(e) => handleFavouritePlace(e)} />}</td>
-                                <td>{item.country_code}</td>
+                                <td>{<input type="checkbox" value = {JSON.stringify(item)} onChange={(e) => handleFavouritePlace(e)} />}</td>
+                                <td>{item._id}</td>
                                 <td>{item.country_name}</td>
                                 <td>{item.country_status}</td>
                             </tr>
