@@ -1,4 +1,4 @@
 .idea_backup
 .idea
 server/.env
-*.pack
+client/node_modules/*.pack
