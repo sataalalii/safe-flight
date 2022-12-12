@@ -71,7 +71,7 @@ def addFavourites():
     countriesCollection = mongoDB.getCollection("countries")
     countriesCollection.update_one(country_data, {"$unset": {"inFavourites": 1}})
 
-    return {"isChecked": json.loads(isChecked)}
+    return {}
 
 @app.route("/resetFavourites", methods = ["POST"])
 def resetFavourites():

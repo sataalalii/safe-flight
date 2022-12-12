@@ -99,8 +99,9 @@ const CS = () => {
                         userSearchData && userSearchData.length > 0 ?
                             userSearchData.map(item =>
                                 <tr>
-                                    <td>{<input type="checkbox" value={console.log(item.inFavourites)}
+                                    <td>{<input type="checkbox" checked ={item.inFavourites !== undefined ? true : false}
                                                 onChange={(e) => handleFavouritePlace(e)}/>}</td>
+                                                {/* <td>{console.log(item.inFavourites)}</td> */}
                                     <td>{item._id}</td>
                                     <td>{item.country_name}</td>
                                     <td>{item.country_status}</td>
