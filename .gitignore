@@ -1,3 +1,4 @@
 .idea_backup
 .idea
 server/.env
+*.pack
