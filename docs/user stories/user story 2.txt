@@ -3,5 +3,8 @@ STORY 2: Searching for a specific location & its info
 As a user, I want to search for a specific location to see its safety information.
 This will allow me to also see whether or not my friends or family are in a safe location.
 How this would happen is I would have a search bar to enter the name of a country, and I would be able to find the
-safety index (safe or not).
+risk factor (low, medium, high).
+
+This would be implemented by gathering all countries from Airlabs API, and polling travel-advisory api on the safety index
+of that country, and with the ranges given by travel-advisory, safety indices are converted to risk factors.
 

@@ -3,6 +3,8 @@ STORY 3: Saving location to favorites list
 As a user, I want to save the places I want to visit because it would be unnecessary to keep searching for them each
 time there might a change in the travel advisory. These locations would be added in the user database under the
 corresponding user. Assuming this is successful, I would have a list of all the places I want to visit, and there would
-be a second column containing whether each place is safe or not, a third column would be a checkbox to indicate whether
-I have overridden its safety (or lack of). I should be able to clear the whole list at once if I wish to reset my
+be a second column containing the risk factor. I should be able to clear the whole list at once if I wish to reset my
 favorite places, but I should also be able to delete a single location from my list.
+
+This would be implemented by using MongoDB to store the favourite countries taken from the database containing all countries
+and their respective risk factors and displayed on a new tab called "Saved Places"
