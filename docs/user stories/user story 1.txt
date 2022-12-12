@@ -4,5 +4,5 @@ account oauth. Assuming creating an account is successful, I should be able to s
 visit instead of searching for a country over and over (related to story 3).
 
 Signing in/up through google oauth entails the creation of an account or logging in through google's system. No
-information about the user's log in is stored except for a session ID to ensure they stay logged in when navigating from
+information about the user's log in is stored except for a session ID token to ensure they stay logged in when navigating from
 tab to tab.

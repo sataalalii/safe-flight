@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import '../App.css'
 import jwt_decode from "jwt-decode";
+import Layout from "./Layout";
 
 const Login = () => {
     const [ user, setUser ] = useState({});

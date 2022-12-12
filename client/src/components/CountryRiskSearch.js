@@ -99,7 +99,7 @@ const CS = () => {
                         userSearchData && userSearchData.length > 0 ?
                             userSearchData.map(item =>
                                 <tr>
-                                    <td>{<input type="checkbox" value={JSON.stringify(item)}
+                                    <td>{<input type="checkbox" value={console.log(item.inFavourites)}
                                                 onChange={(e) => handleFavouritePlace(e)}/>}</td>
                                     <td>{item._id}</td>
                                     <td>{item.country_name}</td>

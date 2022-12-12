@@ -31,7 +31,7 @@ import {
             </NavLink>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/LogIn'>Log In</NavBtnLink>
+            <NavBtnLink to='/LogIn'>Log In Page</NavBtnLink>
           </NavBtn>
         </Nav>
 
