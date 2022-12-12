@@ -2,7 +2,7 @@ import React from "react";
 import {Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import SavedPlaces from "./SavedPlaces";
+
 
 const CS = () => {
     // const[airportsData, setAirportsData] = React.useState([])
@@ -54,56 +54,66 @@ const CS = () => {
             )
     }
 
-    return (
-        <div>
-            <Table>
-                <tr>
-                    <td>
-                        <input class="form-control" type='text' placeholder="Enter country..." onChange={(e) => setCountry(e.target.value)}/>
-                    </td>
-                    <td>
-                        <select className="form-control" onChange={(e)=> setStatus(e.target.value)}>
-                            <option value=''>-Select-</option>
-                            <option value='Low Risk'>Low Risk</option>
-                            <option value='Medium Risk'>Medium Risk</option>
-                            <option value='High Risk'>High Risk</option>
-                            <option value='Unknown'>Unknown</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-outline-primary" onClick={()=> handleSearch()}>Search</button>
-                        <button type="button" class="btn btn-outline-primary" onClick={() => handleUpdateDB()}>Update Database!</button>
-                    </td>
-                </tr>
-            </Table>
+    if (localStorage.getItem("idToken") === "null") {
+        return (<div><h1>Please log in to access this page.</h1></div>);
+    } else {
+        return (
+            <div>
+                <Table>
+                    <tr>
+                        <td>
+                            <input class="form-control" type='text' placeholder="Enter country..."
+                                   onChange={(e) => setCountry(e.target.value)}/>
+                        </td>
+                        <td>
+                            <select className="form-control" onChange={(e) => setStatus(e.target.value)}>
+                                <option value=''>-Select-</option>
+                                <option value='Low Risk'>Low Risk</option>
+                                <option value='Medium Risk'>Medium Risk</option>
+                                <option value='High Risk'>High Risk</option>
+                                <option value='Unknown'>Unknown</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary"
+                                    onClick={() => handleSearch()}>Search
+                            </button>
+                            <button type="button" class="btn btn-outline-primary"
+                                    onClick={() => handleUpdateDB()}>Update Database!
+                            </button>
+                        </td>
+                    </tr>
+                </Table>
 
-            <Table responsive stripped size="sm">
-                <thead>
-                <tr>
-                    <th>Add to Favourites?</th>
-                    <th>Country Code</th>
-                    <th>Name</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    userSearchData && userSearchData.length >0 ?
-                        userSearchData.map(item =>
-                            <tr>
-                                <td>{<input type="checkbox" value = {JSON.stringify(item)} onChange={(e) => handleFavouritePlace(e)} />}</td>
-                                <td>{item._id}</td>
-                                <td>{item.country_name}</td>
-                                <td>{item.country_status}</td>
-                            </tr>
-                        )
-                        : 'No data'
-                }
-                </tbody>
-            </Table>
-            <h1>This page should only appear once the user is logged in</h1>
-        </div>
-    );
+                <Table responsive stripped size="sm">
+                    <thead>
+                    <tr>
+                        <th>Add to Favourites?</th>
+                        <th>Country Code</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        userSearchData && userSearchData.length > 0 ?
+                            userSearchData.map(item =>
+                                <tr>
+                                    <td>{<input type="checkbox" value={JSON.stringify(item)}
+                                                onChange={(e) => handleFavouritePlace(e)}/>}</td>
+                                    <td>{item._id}</td>
+                                    <td>{item.country_name}</td>
+                                    <td>{item.country_status}</td>
+                                </tr>
+                            )
+                            : 'No data'
+                    }
+                    </tbody>
+                </Table>
+
+            </div>
+        );
+    }
 };
 
 export default CS;
