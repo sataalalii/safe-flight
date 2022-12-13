@@ -46,7 +46,6 @@ const CS = () => {
     }
 
     const handleFavouritePlace = (e) => {
-            // console.log(e.target.value, e.target.checked)
             axios.post("/addFavourites", {request_data: {data: e.target.value, isChecked: e.target.checked}}).then(
                 res =>  {
                     console.log(res)
@@ -99,9 +98,8 @@ const CS = () => {
                         userSearchData && userSearchData.length > 0 ?
                             userSearchData.map(item =>
                                 <tr>
-                                    <td>{<input type="checkbox" checked ={item.inFavourites !== undefined ? true : false}
-                                                onChange={(e) => handleFavouritePlace(e)}/>}</td>
-                                                {/* <td>{console.log(item.inFavourites)}</td> */}
+                                    <td>{<input type="checkbox" value = {JSON.stringify(item)}
+                                                onChange={(item) => handleFavouritePlace(item)}/>}</td>
                                     <td>{item._id}</td>
                                     <td>{item.country_name}</td>
                                     <td>{item.country_status}</td>

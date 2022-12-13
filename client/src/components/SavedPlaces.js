@@ -40,7 +40,15 @@ const SavedPlaces = () => {
                 }
             )
     }
-if (localStorage.getItem("idToken") === "null") {
+
+    const handleFavouritePlace = (e) => {
+        axios.post("/addFavourites", {request_data: {data: e.target.value, isChecked: !e.target.checked}}).then(
+            res =>  {
+                console.log(res)
+            }
+        )
+    }  
+    if (localStorage.getItem("idToken") === "null") {
         return (<div><h1>Please log in to access this page.</h1></div>);
     } else {
         return (
@@ -49,7 +57,7 @@ if (localStorage.getItem("idToken") === "null") {
                     <tr>
                         <td>
                             <input class="form-control" type='text' placeholder="Enter country..."
-                                   onChange={(e) => setCountry(e.target.value)}/>
+                                onChange={(e) => setCountry(e.target.value)}/>
                         </td>
                         <td>
                             <select className="form-control" onChange={(e) => setStatus(e.target.value)}>
@@ -74,6 +82,7 @@ if (localStorage.getItem("idToken") === "null") {
                 <Table responsive stripped size="sm">
                     <thead>
                     <tr>
+                        <th>Remove?</th>
                         <th>Country Code</th>
                         <th>Name</th>
                         <th>Status</th>
@@ -85,6 +94,8 @@ if (localStorage.getItem("idToken") === "null") {
                         userSearchData && userSearchData.length > 0 ?
                             userSearchData.map(item =>
                                 <tr>
+                                <td>{<input type="checkbox" value = {JSON.stringify(item)}
+                                                onChange={(item) => handleFavouritePlace(item)}/>}</td>
                                     <td>{item._id}</td>
                                     <td>{item.country_name}</td>
                                     <td>{item.country_status}</td>

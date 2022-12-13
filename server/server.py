@@ -56,14 +56,14 @@ def countriesDB():
 def addFavourites():
     request_data = request.get_json()["request_data"]
     country_data = json.loads(request_data.get('data'))
-    isChecked = request_data.get("isChecked")
+    isChecked = json.dumps(request_data.get("isChecked"))
 
     if ("favourites" in mongoDB.mydb.list_collection_names()):
         mycol = mongoDB.getCollection("favourites")
     else:
         mycol = mongoDB.createCollection("favourites")
 
-    if (isChecked):
+    if (isChecked == "true"):
         mycol.insert_one(json.loads(json_util.dumps(country_data)))
     else:
         mycol.delete_one({"_id": country_data["_id"]})
