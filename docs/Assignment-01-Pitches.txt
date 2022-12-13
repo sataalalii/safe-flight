@@ -26,9 +26,7 @@ Idea 2: Safe Flight (Primary Idea)
 
 Our second idea allows users to look up how safe a specific location is based on a safety index. The user will be able
 to see if a country is safe to visit or not and store their favourite countries in a list that updates to check for
-changes. The user will be allowed to make a flight search using departure and arrival iata codes, but if a place is not
-safe to visit, the user will be warned first. The results of the flight search should display options of flights that
-are scheduled.
+changes. This idea is to allow users to make informed decisions for their flight bookings.
 
 The two APIS we are using are Travel Advisory (https://www.travel-advisory.info/data-api) to get the
 latest travel advisory index on the countries and

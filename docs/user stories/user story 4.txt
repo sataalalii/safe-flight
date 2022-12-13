@@ -1,9 +1,0 @@
-STORY 4: Checking flights? Or searching for specific airline to filter list of flights
-
-As a user, I want to be able to have flights going to a place/ favorite location displayed by my preference of
-an airline first. This would be optional, as I may not have a preferred airline. If a location is safe, and I want to
-see flights, I can input a date range (will have a couple month limit) to filter more relevant flights. I would also
-need to input the departing iata_code and the arrival iata_code of the respective airports to conduct that search.
-The result of my search should show the airport names and departure and arrival times, relative to the airports'
-time zones.
-
