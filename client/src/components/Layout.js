@@ -9,7 +9,6 @@ import {
   } from './NavbarElements';
 
   const Layout = () => {
-    // console.log(document.getElementById("logInButton").getAttribute('id'))
     return (
       <>
         <Nav>
@@ -32,9 +31,8 @@ import {
             </NavLink>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to='/LogIn' id="logInButton"
-              value = {(localStorage.getItem("idToken") !== null && localStorage.getItem("idToken") !== "null")? "Log Out" : "Log In" } >
-              {/* {document.getElementById("logInButton").getAttribute("value")} */}
+            <NavBtnLink to='/LogIn' id="logInButton">
+              Account
             </NavBtnLink>
           </NavBtn>
         </Nav>

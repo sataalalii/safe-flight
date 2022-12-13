@@ -10,7 +10,7 @@ function LoginForm({ Login, error }) {
     }
 
     return (
-        <form onSubmit={submitHnadler}>
+        <form onSubmit={submitHandler}>
             <div className="form-inner">
                 <h2>Login</h2>
                 {(error != "") ? ( <div className="error">{error}</div> ) : ""}
